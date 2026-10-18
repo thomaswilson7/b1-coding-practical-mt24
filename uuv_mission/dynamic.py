@@ -107,7 +107,7 @@ class ClosedLoop:
             observation_t = self.plant.get_depth()
              
             error_t = mission.reference[t] - observation_t # calculate the error as that is the input to the controller
-            actions[t] = self.controller(error_t) # send the error to the controller to get the action
+            actions[t] = self.controller.calculate(error_t) # send the error to the controller to get the action
 
             self.plant.transition(actions[t], disturbances[t])
 
